@@ -1,5 +1,8 @@
 #include "sortlib.h"
 
+/* selection sort "selects" the smallest value in the array at every iteration.
+ * and puts it in its final place in the array.
+ */
 static void selection(int *arp, size_t len)
 {
         size_t i;
