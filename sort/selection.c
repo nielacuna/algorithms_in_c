@@ -3,14 +3,13 @@
 /* selection sort "selects" the smallest value in the array at every iteration.
  * and puts it in its final place in the array.
  */
-static void selection(int *arp, size_t len)
+static void selection(int *arp, size_t l, size_t len)
 {
         size_t i;
         size_t j;
         size_t min;
-        int t;
 
-        for (i = 0; i < len; i++) {
+        for (i = l; i < len; i++) {
                 min = i; /* initially, current index is assumed to be smallest */
 
                 /* look for the smallest */
@@ -22,10 +21,7 @@ static void selection(int *arp, size_t len)
 
                 /* at this point, min points to smallest.
                  * we need to swap it to the "current" index. */
-
-                t = arp[min];
-                arp[min] = arp[i];
-                arp[i] = t;
+                sortlib_exchg(&arp[i], &arp[min]);
         }
         return;
 }
@@ -36,7 +32,7 @@ int main(void)
         size_t len = sortlib_get_test_length();
 
         sortlib_print_test_array();
-        selection(arp, len);
+        selection(arp, 0, len);
         sortlib_print_test_array();
         return 0;
 }
